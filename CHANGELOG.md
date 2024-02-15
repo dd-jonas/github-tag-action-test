@@ -1,5 +1,11 @@
 # github-tag-actions
 
+## 1.2.0
+
+### Minor Changes
+
+- 6d18379: test lijn
+
 ## 1.1.1
 
 ### Patch Changes
