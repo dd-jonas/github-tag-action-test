@@ -1,10 +1,12 @@
 {
   "name": "github-tag-actions",
-  "version": "1.0.0",
+  "private": true,
+  "version": "1.0.1",
   "description": "Hello world",
   "main": "index.js",
   "scripts": {
     "changeset": "changeset",
+    "changeset:version": "changeset version",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
