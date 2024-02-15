@@ -1,0 +1,24 @@
+{
+  "name": "github-tag-actions",
+  "version": "1.0.0",
+  "description": "Hello world",
+  "main": "index.js",
+  "scripts": {
+    "changeset": "changeset",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dd-jonas/github-tag-action-test.git"
+  },
+  "keywords": [],
+  "author": "Jonas Di Dier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dd-jonas/github-tag-action-test/issues"
+  },
+  "homepage": "https://github.com/dd-jonas/github-tag-action-test#readme",
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1"
+  }
+}
