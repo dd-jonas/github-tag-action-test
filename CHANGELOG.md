@@ -1,10 +1,18 @@
 # github-tag-actions
 
+## 1.2.0
+
+### Minor Changes
+
+- Nieuwe feature toegevoegd
+- Feature toegevoegd
+- Test lijn
+
 ## 1.1.1
 
 ### Patch Changes
 
-- test lijn
+- Test lijn
 
 ## 1.1.0
 
@@ -16,5 +24,5 @@
 
 ### Patch Changes
 
-- e7c7062: Changelog toegevoegd
-- 96c9c67: Readme aangepast
+- Changelog toegevoegd
+- Readme aangepast
