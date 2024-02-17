@@ -1,0 +1,33 @@
+name: Tag release
+
+on:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  generate-changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check if changesets are present
+        id: status
+        run: |
+          npx changeset status --output status.json
+          cat status.json
+          JSON=$(cat status.json)
+          echo "status=${JSON//'%'/'%25'}" >> $GITHUB_OUTPUT
+        continue-on-error: true # Throws when no changesets are found
+
+      - name: Test output
+        run: echo ${{ steps.status.outputs.status }}
+
+      - name: Bump version and generate changelog
+        if: steps.status.outcome == 'success'
+        run: npx changeset version
