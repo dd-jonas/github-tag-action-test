@@ -28,7 +28,9 @@ jobs:
         id: status
         run: |
           content=`cat changeset-status.json`
-          echo "status=$content" >> $GITHUB_OUTPUT
+          echo "status=${content//'%'/'%25'}" >> $GITHUB_OUTPUT
+
+      - run: echo "${{steps.status.outputs.status}}" # Debug
 
       - name: Check if changelog update is needed
         id: check
