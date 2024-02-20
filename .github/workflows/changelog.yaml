@@ -27,9 +27,11 @@ jobs:
       - name: Read changeset status
         id: status
         run: |
-          echo "STATUS<<EOF" >> $GITHUB_OUTPUT
-          cat changeset-status.json >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          {
+            echo 'STATUS<<EOF'
+            cat changeset-status.json
+            echo EOF
+          } >> $GITHUB_OUTPUT
 
       - run: echo "${{steps.status.outputs.status}}" # Debug
 
