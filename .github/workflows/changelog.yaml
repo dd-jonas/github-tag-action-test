@@ -27,8 +27,9 @@ jobs:
       - name: Read changeset status
         id: status
         run: |
-          content=`cat changeset-status.json`
-          echo "status=${content//'%'/'%25'}" >> $GITHUB_OUTPUT
+          echo "STATUS<<EOF" >> $GITHUB_OUTPUT
+          cat changeset-status.json >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - run: echo "${{steps.status.outputs.status}}" # Debug
 
