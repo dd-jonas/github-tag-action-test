@@ -22,27 +22,28 @@ jobs:
         run: npm install @changesets/cli
 
       - name: Check if changesets are present
+        run: npx changeset add --empty && npx changeset status --output changeset-status.json
+
+      - name: Read changeset status
         id: status
-        run: npx changeset status
-        continue-on-error: true # Throws when no changesets are found
+        run: |
+          content=`cat ./changeset-status.json`
+          content="${content//'%'/'%25'}"
+          content="${content//$'\n'/'%0A'}"
+          content="${content//$'\r'/'%0D'}"
+          echo "status=$content" >> $GITHUB_OUTPUT
 
-      - name: Bump version and generate changelog
-        if: steps.status.outcome == 'success'
-        run: npx changeset version
+      - name: Check if changelog update is needed
+        id: check
+        run: echo "${{fromJson(steps.status.outputs.status)}}"
 
-      - name: Commit and push changes
-        if: steps.status.outcome == 'success'
-        uses: actions-js/push@v1.4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          message: 'chore: bump version and generate changelog (bot)'
+      # - name: Bump version and generate changelog
+      #   if: steps.status.outcome == 'success'
+      #   run: npx changeset version
 
-      - name: Create tag
-        if: steps.status.outcome == 'success'
-        run: npx changeset tag
-
-      - name: Push tag
-        if: steps.status.outcome == 'success'
-        uses: actions-ecosystem/action-push-tag@v1
-        with:
-          tag: ${{ steps.bump-semver.outputs.new_version }}
+      # - name: Commit and push changes
+      #   if: steps.status.outcome == 'success'
+      #   uses: actions-js/push@v1.4
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     message: 'chore: bump version and generate changelog (bot)'
