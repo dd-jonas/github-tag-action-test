@@ -35,7 +35,7 @@ jobs:
 
       - name: Check if changelog update is needed
         id: check
-        run: echo "${{steps.status.outputs.status}}"
+        run: echo "${{fromJson(steps.status.outputs.status).releases}}"
 
       # - name: Bump version and generate changelog
       #   if: steps.status.outcome == 'success'
