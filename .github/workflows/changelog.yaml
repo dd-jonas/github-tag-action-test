@@ -37,16 +37,13 @@ jobs:
         id: check
         run: echo "check=${{fromJson(steps.status.outputs.status).releases[0] != null}}" >> $GITHUB_OUTPUT
 
-      - run: echo "${{steps.check.outputs.check}}" # Debug
+      - name: Bump version and generate changelog
+        if: steps.status.outcome == 'success'
+        run: npx changeset version
 
-
-      # - name: Bump version and generate changelog
-      #   if: steps.status.outcome == 'success'
-      #   run: npx changeset version
-
-      # - name: Commit and push changes
-      #   if: steps.status.outcome == 'success'
-      #   uses: actions-js/push@v1.4
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     message: 'chore: bump version and generate changelog (bot)'
+      - name: Commit and push changes
+        if: steps.status.outcome == 'success'
+        uses: actions-js/push@v1.4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: 'chore: bump version and generate changelog (bot)'
