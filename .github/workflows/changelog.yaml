@@ -35,7 +35,7 @@ jobs:
 
       - name: Check if changelog update is needed
         id: check
-        run: echo "check${{fromJson(steps.status.outputs.status).releases[0] != null}}" >> $GITHUB_OUTPUT
+        run: echo "check=${{fromJson(steps.status.outputs.status).releases[0] != null}}" >> $GITHUB_OUTPUT
 
       - run: echo "${{steps.checks.outputs.check}}" # Debug
 
