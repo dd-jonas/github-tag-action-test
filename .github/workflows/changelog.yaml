@@ -37,7 +37,7 @@ jobs:
         id: check
         run: echo "check=${{fromJson(steps.status.outputs.status).releases[0] != null}}" >> $GITHUB_OUTPUT
 
-      - run: echo "${{steps.checks.outputs.check}}" # Debug
+      - run: echo "${{steps.check.outputs.check}}" # Debug
 
 
       # - name: Bump version and generate changelog
