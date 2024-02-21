@@ -21,8 +21,12 @@ jobs:
       - name: Install Changesets
         run: npm install @changesets/cli
 
+      # Prevent `npx changeset status` from throwing due to missing changesets
+      - name: Ensure at least one changeset exists
+        run: npx changeset add --empty
+
       - name: Check if changesets are present
-        run: npx changeset add --empty && npx changeset status --output changeset-status.json
+        run: npx changeset status --output changeset-status.json
 
       - name: Read changeset status
         id: status
