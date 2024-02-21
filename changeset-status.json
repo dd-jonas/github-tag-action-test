@@ -1,30 +1,10 @@
 {
   "changesets": [
     {
-      "releases": [
-        {
-          "name": "github-tag-actions",
-          "type": "patch"
-        }
-      ],
-      "summary": "Test changeset",
-      "id": "shy-humans-yawn"
-    },
-    {
       "releases": [],
       "summary": "",
-      "id": "ten-crabs-vanish"
+      "id": "tricky-eels-glow"
     }
   ],
-  "releases": [
-    {
-      "name": "github-tag-actions",
-      "type": "patch",
-      "oldVersion": "1.2.0",
-      "changesets": [
-        "shy-humans-yawn"
-      ],
-      "newVersion": "1.2.1"
-    }
-  ]
+  "releases": []
 }
