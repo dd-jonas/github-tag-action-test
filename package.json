@@ -1,7 +1,7 @@
 {
   "name": "github-tag-actions",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Hello world",
   "main": "index.js",
   "scripts": {
