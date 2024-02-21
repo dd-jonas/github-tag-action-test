@@ -1,5 +1,11 @@
 # github-tag-actions
 
+## 1.2.1
+
+### Patch Changes
+
+- d5799c4: Test changeset
+
 ## 1.2.0
 
 ### Minor Changes
