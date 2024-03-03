@@ -1,19 +1,13 @@
 {
   "name": "github-tag-actions",
   "private": true,
-  "version": "1.2.1",
-  "description": "Hello world",
+  "version": "1.6.0",
   "main": "index.js",
   "scripts": {
     "changeset": "changeset",
-    "changeset:version": "changeset version",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "changeset:version": "changeset version && yarn changeset:clean",
+    "changeset:clean": "npx tsx ./.changeset/scripts/cleanupChangelog.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dd-jonas/github-tag-action-test.git"
-  },
-  "keywords": [],
   "author": "Jonas Di Dier",
   "license": "ISC",
   "bugs": {
@@ -22,6 +16,7 @@
   "homepage": "https://github.com/dd-jonas/github-tag-action-test#readme",
   "devDependencies": {
     "@changesets/changelog-git": "^0.2.0",
-    "@changesets/cli": "^2.27.1"
+    "@changesets/cli": "^2.27.1",
+    "@types/node": "^20.11.24"
   }
 }
